@@ -40,7 +40,12 @@ public class MysqlState<T> implements IBackingMap<T> {
 		this.config = config;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
-			connection = DriverManager.getConnection(config.getUrl());
+			if(config.getUsername() == null || config.getPassword() == null){
+				connection = DriverManager.getConnection(config.getUrl());
+			}else{
+				connection = DriverManager.getConnection(config.getUrl(),config.getUsername(),config.getPassword());	
+			}
+			
 		} catch (final SQLException | ClassNotFoundException ex) {
 			logger.error("Failed to establish DB connection", ex);
 		}
