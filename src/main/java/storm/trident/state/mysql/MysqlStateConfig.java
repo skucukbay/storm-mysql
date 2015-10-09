@@ -12,6 +12,10 @@ public class MysqlStateConfig implements Serializable {
 	private StateType type = StateType.OPAQUE;
 	private String[] keyColumns;
 	private String[] valueColumns;
+	private String pureUrl;
+	private String username;
+	private String password;
+	
 	private int batchSize = DEFAULT_BATCH_SIZE;
 	private int cacheSize = DEFAULT_CACHE_SIZE;
 
@@ -72,6 +76,30 @@ public class MysqlStateConfig implements Serializable {
 
 	public void setBatchSize(int batchSize) {
 		this.batchSize = batchSize;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getPureUrl() {
+		return pureUrl;
+	}
+
+	public void setPureUrl(String pureUrl) {
+		this.pureUrl = pureUrl;
 	}
 
 }

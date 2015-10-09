@@ -1,16 +1,46 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<parent>
+		<groupId>com.comodo</groupId>
+		<artifactId>storm-deployment</artifactId>
+		<version>1.0</version>
+		<relativePath>../../atm_be_core_lib/storm-deployment/pom.xml</relativePath>
+	</parent>
+
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>storm-mysql</groupId>
 	<artifactId>storm-mysql</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-COMODO</version>
+
 	
-	<properties>
-		<java.version>1.7</java.version>
-		<storm.version>0.9.0-wip16</storm.version>
-		<mysql.driver.version>5.1.24</mysql.driver.version>
-	</properties>
-	
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.storm</groupId>
+			<artifactId>storm-core</artifactId>
+			<version>${storm.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.connector.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.jolbox</groupId>
+			<artifactId>bonecp</artifactId>
+			<version>${bonecp.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>${HikariCP.version}</version>
+			<scope>compile</scope>
+		</dependency>
+	</dependencies>
+
+
 	<build>
 		<finalName>${project.artifactId}</finalName>
 		<sourceDirectory>src/main/java</sourceDirectory>
@@ -25,23 +55,5 @@
 			</plugin>
 		</plugins>
 	</build>
-	<dependencies>
-		<dependency>
-			<groupId>storm</groupId>
-			<artifactId>storm</artifactId>
-			<version>${storm.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql.driver.version}</version>
-		</dependency>
-	</dependencies>
-	<repositories>
-		<repository>
-			<id>clojars.org</id>
-			<url>http://clojars.org/repo</url>
-		</repository>
-	</repositories>
+
 </project>
